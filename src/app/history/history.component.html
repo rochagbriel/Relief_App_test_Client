@@ -1,1 +1,9 @@
-<p>history works!</p>
+<div>
+    <h2>History</h2>
+    <ul>
+      <li *ngFor="let item of historyItems">
+        {{ item.videoUrl }} - Last Access: {{ item.lastAccess }}
+      </li>
+    </ul>
+    <button (click)="clearHistory()">Clear History</button>
+  </div>

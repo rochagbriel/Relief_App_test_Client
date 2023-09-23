@@ -37,7 +37,7 @@ export class VideoApiService {
 
   // This method will be used to delete a single video link from the Bookmarks
   deleteBookmarksByVideoUrl(videoUrl: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/bookmarks=${videoUrl}`);
+    return this.http.delete(`${this.apiUrl}/bookmarks?videoUrl=${videoUrl}`);
   }
 
 }
