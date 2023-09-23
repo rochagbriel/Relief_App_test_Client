@@ -1,18 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { VideoViewComponent } from './video-view/video-view.component';
+import { HistoryComponent } from './history/history.component';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { VideoApiService } from './video-api.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchbarComponent,
+    VideoViewComponent,
+    HistoryComponent,
+    BookmarksComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [VideoApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

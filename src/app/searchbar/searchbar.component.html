@@ -1,0 +1,8 @@
+<form [formGroup]="videoForm" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    formControlName="videoUrl"
+    placeholder="Enter YouTube URL"
+  />
+  <button type="submit">Submit</button>
+</form>
