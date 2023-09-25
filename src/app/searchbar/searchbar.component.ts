@@ -20,7 +20,7 @@ export class SearchbarComponent {
 
   onSubmit() {
     const videoUrl = this.videoForm.value.videoUrl;
-
+    
     this.sharedService.setVideoUrl(videoUrl);
     this.videoService.postHistoryByVideoUrl(videoUrl).subscribe(
       (res) => {

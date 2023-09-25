@@ -10,6 +10,7 @@ import { HistoryComponent } from './history/history.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VideoApiService } from './video-api.service';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { VideoApiService } from './video-api.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    YouTubePlayerModule
   ],
   providers: [VideoApiService],
   bootstrap: [AppComponent]

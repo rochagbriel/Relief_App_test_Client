@@ -1,9 +1,9 @@
-<h2>Bookmarks</h2>
+<h2>Bookmarks({{BookmarksItems.length}})</h2>
 <p>{{ videoUrl }}</p>
 <button (click)="addBookmarks()">Add Bookmarks</button>
 <button (click)="seeMyBookmarks()">My Bookmarks</button>
 <ul>
   <li *ngFor="let item of BookmarksItems">
-    {{ item.videoUrl }} - Add Date: {{ item.addDate }}<button (click)="deleteBookmark(item.videoUrl)">Delete</button>
+    <button>{{ item.videoUrl }}</button><button (click)="deleteBookmark(item.videoUrl)">Delete</button>
   </li>
 </ul>

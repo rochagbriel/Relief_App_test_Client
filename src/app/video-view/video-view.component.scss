@@ -1,6 +1,8 @@
-.screen {
+.youtube-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 4*108px;
     width: 4*192px;
     background-color: #e9e5e5;
-    border: 3px, solid, #811010;
 }
