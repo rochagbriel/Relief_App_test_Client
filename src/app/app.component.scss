@@ -1,0 +1,37 @@
+.body {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .video-display {
+        text-align: center;
+        margin: 0 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 1000px;
+        ul {
+            text-decoration: none;
+            list-style-type: none;
+        }
+    }
+    .youtube-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 4*108px;
+        width: 4*192px;
+        background-color: #e9e5e5;
+    }
+    .searchbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 1000px;
+    }
+
+    
+}

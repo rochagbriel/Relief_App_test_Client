@@ -11,6 +11,12 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VideoApiService } from './video-api.service';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -22,10 +28,16 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
   ],
   imports: [
     BrowserModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatDividerModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    BrowserAnimationsModule,
   ],
   providers: [VideoApiService],
   bootstrap: [AppComponent]

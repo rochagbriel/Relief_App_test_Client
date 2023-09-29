@@ -1,9 +1,9 @@
-<div>
-    <h2>History</h2>
-    <ul>
-      <li *ngFor="let item of historyItems | async">
-        <button (click)="playVideo(item)">{{ item }}</button>
-      </li>
-    </ul>
-    <button (click)="clearHistory()">Clear History</button>
-  </div>
+<div class="mat-card">
+  <h2 class="mat-h2">History</h2>
+  <ul class="mat-list">
+    <li *ngFor="let item of historyItems | async" class="mat-list-item">
+      <button mat-raised-button color="primary" (click)="playVideo(item)">{{ item }}</button>
+    </li>
+  </ul>
+  <button mat-raised-button color="warn" (click)="clearHistory()">Clear History</button>
+</div>

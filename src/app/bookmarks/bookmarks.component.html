@@ -1,9 +1,16 @@
-<h2>Bookmarks({{BookmarksItems.length}})</h2>
-<p>{{ videoUrl }}</p>
-<button (click)="addBookmarks()">Add Bookmarks</button>
-<button (click)="seeMyBookmarks()">My Bookmarks</button>
+<h2>Bookmarks ({{ BookmarksItems.length }})</h2>
+<button mat-raised-button color="primary" (click)="addBookmarks()">Add Bookmarks</button>
+<button mat-raised-button color="primary" (click)="goToMyBookmarks()">Update Bookmarks</button>
+<mat-divider></mat-divider>
 <ul>
   <li *ngFor="let item of BookmarksItems">
-    <button>{{ item.videoUrl }}</button><button (click)="deleteBookmark(item.videoUrl)">Delete</button>
+    <mat-card>
+      <mat-card-title>{{ item.videoUrl }}</mat-card-title>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="playVideo(item.videoUrl)">Play</button>
+        <button mat-raised-button color="warn" (click)="deleteBookmark(item.videoUrl)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-divider></mat-divider>
   </li>
 </ul>
