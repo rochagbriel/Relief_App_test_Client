@@ -25,7 +25,11 @@ export class HistoryComponent implements OnInit {
 
   clearHistory() {
     this.videoService.clearAllHistory().subscribe((res) => {
-      // this.historyItems = [];
+      this.historyItems = res;
     });
+  }
+
+  playVideo(videoUrl: string) {
+    this.sharedService.setVideoUrl(videoUrl);
   }
 }
