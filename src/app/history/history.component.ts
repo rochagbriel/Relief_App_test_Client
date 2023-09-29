@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoApiService } from '../video-api.service';
+import { SharedService } from '../shared.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'history',
@@ -7,19 +9,23 @@ import { VideoApiService } from '../video-api.service';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
-  historyItems: any = [];
+  historyItems = this.sharedService.history$.pipe(
+    map((x) => {
+      console.log(x);
+      return x;
+    })
+  );
 
-  constructor(private videoService: VideoApiService) {}
+  constructor(
+    private videoService: VideoApiService,
+    private sharedService: SharedService
+  ) {}
 
-  ngOnInit(): void {
-    this.videoService.getAllHistory().subscribe((res) => {
-      this.historyItems = res;
-    });
-  }
+  ngOnInit(): void {}
 
   clearHistory() {
     this.videoService.clearAllHistory().subscribe((res) => {
-      this.historyItems = [];
+      // this.historyItems = [];
     });
   }
 }

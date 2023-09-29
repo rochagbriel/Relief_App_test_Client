@@ -12,7 +12,10 @@ export class SearchbarComponent {
   videoForm: FormGroup;
   videoUrl: string = '';
 
-  constructor(private fb: FormBuilder, private videoService: VideoApiService, private sharedService: SharedService) {
+  constructor(
+      private fb: FormBuilder, 
+      private videoService: VideoApiService,
+      private sharedService: SharedService) {
     this.videoForm = this.fb.group({
       videoUrl: ['', Validators.required]
     });
@@ -20,7 +23,6 @@ export class SearchbarComponent {
 
   onSubmit() {
     const videoUrl = this.videoForm.value.videoUrl;
-    
     this.sharedService.setVideoUrl(videoUrl);
     this.videoService.postHistoryByVideoUrl(videoUrl).subscribe(
       (res) => {
