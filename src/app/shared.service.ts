@@ -19,10 +19,17 @@ export class SharedService {
   private history = new BehaviorSubject<any>([]);
   history$ = this.history.asObservable();
 
+  private bookmarks = new BehaviorSubject<any>([]);
+  bookmarks$ = this.bookmarks.asObservable();
+
   constructor(private videoService: VideoApiService) {
     this.videoService.getAllHistory().subscribe((videos) => {
-      this.history.next(videos.map((x: VideoItem) => x.videoUrl));
+      this.history.next(videos.map((v: VideoItem) => v.videoUrl));
     });
+
+    this.videoService.getAllBookmarks().subscribe((bookmarks) => {
+      this.bookmarks.next(bookmarks.map((b: VideoItem) => b.videoUrl));
+    })
   }
 
   setVideoUrl(videoUrl: string) {
@@ -35,6 +42,25 @@ export class SharedService {
     this.videoUrlSubject.next(videoUrl);
     let vids: string[] = [...this.history.getValue(), videoUrl];
     this.history.next(vids);
+  }
+
+  setBookmarks(videoUrl: string) {
+    const bookmarks = this.bookmarks.getValue();
+    const index = bookmarks.indexOf(videoUrl);
+    if (index !== -1) {
+      bookmarks.splice(index, 1);
+    }
+    let book: string[] = [...this.bookmarks.getValue(),  videoUrl];
+    this.bookmarks.next(book);
+  }
+
+  removeBookmark(videoUrl: string) {
+    const bookmarks = this.bookmarks.getValue();
+    const index = bookmarks.indexOf(videoUrl);
+    if (index !== -1) {
+      bookmarks.splice(index, 1);
+    }
+    this.bookmarks.next(bookmarks);
   }
 
   getBookmarks() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { VideoApiService } from '../video-api.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'bookmarks',
@@ -10,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class BookmarksComponent implements OnInit {
   videoUrl: string = '';
-  BookmarksItems: any = [];
 
   constructor(
     private router: Router,
@@ -22,31 +22,30 @@ export class BookmarksComponent implements OnInit {
     });
   }
 
+  bookmarksItems = this.sharedService.bookmarks$.pipe(
+    map((bookmark) => {
+      return bookmark;
+    })
+  );
+
   ngOnInit(): void {
-    // get how many videos are bookmarked when app runs for the first time
-    this.sharedService.getBookmarks().subscribe((res) => {
-      return this.BookmarksItems = res;
-    }
-    );
   }
 
   addBookmarks() {
     this.videoService.postBookmarksByVideoUrl(this.videoUrl).subscribe((res) => {
-      this.BookmarksItems = res;
+      this.bookmarksItems = res;
     });
+    this.sharedService.setBookmarks(this.videoUrl);
+  
   }
 
-  goToMyBookmarks() {
-    this.videoService.getAllBookmarks().subscribe((res) => {
-      this.BookmarksItems = res;
-      this.router.navigate(['/bookmarks']);
-    });
-  }
+
 
   deleteBookmark(item: string) {
     this.videoService.deleteBookmarksByVideoUrl(item).subscribe((res) => {
-      this.BookmarksItems = res;
+      this.bookmarksItems = res;
     });
+    this.sharedService.removeBookmark(this.videoUrl);
   }
 
   playVideo(videoUrl: string) {

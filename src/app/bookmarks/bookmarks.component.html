@@ -1,14 +1,13 @@
-<h2>Bookmarks ({{ BookmarksItems.length }})</h2>
+<h2>Bookmarks ({{ (bookmarksItems |async ).length }})</h2>
 <button mat-raised-button color="primary" (click)="addBookmarks()">Add Bookmarks</button>
-<button mat-raised-button color="primary" (click)="goToMyBookmarks()">Update Bookmarks</button>
 <mat-divider></mat-divider>
 <ul>
-  <li *ngFor="let item of BookmarksItems">
+  <li *ngFor="let item of bookmarksItems | async">
     <mat-card>
-      <mat-card-title>{{ item.videoUrl }}</mat-card-title>
+      <mat-card-title>{{ item }}</mat-card-title>
       <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="playVideo(item.videoUrl)">Play</button>
-        <button mat-raised-button color="warn" (click)="deleteBookmark(item.videoUrl)">Delete</button>
+        <button mat-raised-button color="accent" (click)="playVideo(item)">Play</button>
+        <!-- <button mat-raised-button color="warn" (click)="deleteBookmark(item)">Delete</button> -->
       </mat-card-actions>
     </mat-card>
     <mat-divider></mat-divider>
